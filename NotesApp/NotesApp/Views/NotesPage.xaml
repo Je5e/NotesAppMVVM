@@ -1,16 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NotesApp.ViewModels"
              x:Class="NotesApp.Views.NotesPage"
              Title="Notes">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+"
-                     Clicked="OnNoteAddedClicked" />
+                     Command="{Binding NoteAddedCommand}">
+            <ToolbarItem.BindingContext>
+                <vm:NotesPageViewModel/>
+            </ToolbarItem.BindingContext>
+        </ToolbarItem> 
     </ContentPage.ToolbarItems>
     <ListView x:Name="listView"
               ItemsSource="{Binding Notes}"
               Margin="20"
               ItemSelected="OnListViewItemSelect">
+        <ListView.BindingContext>
+            <vm:NotesPageViewModel/>
+        </ListView.BindingContext>
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding Text}"

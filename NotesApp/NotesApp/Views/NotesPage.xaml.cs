@@ -12,12 +12,9 @@ namespace NotesApp.Views
         public NotesPage()
         {
             InitializeComponent();
-            BindingContext = new ViewModels.NotesPageViewModel();
+            listView.BindingContext = new ViewModels.NotesPageViewModel();
         }
-        void OnNoteAddedClicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new NoteEntryPage());
-        }
+       
 
         void OnListViewItemSelect(object sender, SelectedItemChangedEventArgs e)
         {

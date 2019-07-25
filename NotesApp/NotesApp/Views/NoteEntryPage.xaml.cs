@@ -14,6 +14,8 @@ namespace NotesApp.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NoteEntryPage : ContentPage
 	{
+        public EventHandler<Note> OnNoteAdded;
+
         private readonly Note note=new Note();
 
         public NoteEntryPage(Note note)
@@ -45,6 +47,7 @@ namespace NotesApp.Views
                 {
                     DisplayAlert("Aviso", DataBase.MessageStatus, "ok");
                 }
+                OnNoteAdded(this, nuevaNota);
             }
             catch (Exception ex)
             {
@@ -52,6 +55,7 @@ namespace NotesApp.Views
             }
             finally
             {
+               
                 Navigation.PopAsync();
             }
           
