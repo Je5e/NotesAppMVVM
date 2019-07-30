@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 using NotesApp.Models;
@@ -7,10 +9,22 @@ using Xamarin.Forms;
 
 namespace NotesApp.ViewModels
 {
-  public  class NotesPageViewModel
+  public  class NotesPageViewModel:BaseViewModel
     {
-         //private  readonly NoteDatabase database;
-        public List<Note> Notes { get; set; }
+        //private  readonly NoteDatabase database;
+
+        private List<Note> Notes_BF;
+        public List<Note> Notes
+        {
+            get { return Notes_BF; }
+            set
+            {
+                Notes_BF = value;
+                OnPropertyChanged();
+            }
+        }
+     
+        public Note NotaSeleccionada { get; set; }
 
         public Command NoteAddedCommand { get; set; }
 
@@ -22,6 +36,8 @@ namespace NotesApp.ViewModels
             NoteAddedCommand = new Command(Navigate);
 
         }
+
+      
 
         private List<Note> GetAllNotes()
         {

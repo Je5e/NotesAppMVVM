@@ -12,7 +12,7 @@ namespace NotesApp.Views
         public NotesPage()
         {
             InitializeComponent();
-            listView.BindingContext = new ViewModels.NotesPageViewModel();
+            //listView.BindingContext = new ViewModels.NotesPageViewModel();
         }
        
 

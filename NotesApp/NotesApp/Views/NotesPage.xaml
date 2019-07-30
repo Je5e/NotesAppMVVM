@@ -4,21 +4,20 @@
              xmlns:vm="clr-namespace:NotesApp.ViewModels"
              x:Class="NotesApp.Views.NotesPage"
              Title="Notes">
+    <ContentPage.BindingContext>
+        <vm:NotesPageViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+"
                      Command="{Binding NoteAddedCommand}">
-            <ToolbarItem.BindingContext>
-                <vm:NotesPageViewModel/>
-            </ToolbarItem.BindingContext>
+          
         </ToolbarItem> 
     </ContentPage.ToolbarItems>
     <ListView x:Name="listView"
               ItemsSource="{Binding Notes}"
               Margin="20"
               ItemSelected="OnListViewItemSelect">
-        <ListView.BindingContext>
-            <vm:NotesPageViewModel/>
-        </ListView.BindingContext>
+       
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding Text}"
